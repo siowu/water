@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en-us">
+
+<head>
+
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <title>控制</title>
+    <script src="https://unpkg.com/axios@0.27.2/dist/axios.min.js"></script>
+    <meta name="description" content="">
+
+    <!-- The compiled CSS file -->
+    <link rel="stylesheet" href="css/production.css">
+
+    <!-- Web fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700|Source+Serif+Pro:700" rel="stylesheet">
+
+    <!-- favicon.ico. Place these in the root directory. -->
+    <link rel="shortcut icon" href="favicon.ico">
+
+</head>
+
+<body class="has-animations">
+    
+    <br><br>
+    <div style="font-size:49px; font-weight:300; text-align:center">小吴打水系统</div>
+    <!-- Header -->
+    <div align="center">
+        <img src="img/logo.png" width="280px" height="280px">
+    </div>
+    <header class="align--center pt3">
+        <div class="container--lg border--bottom pb3">
+            <div style="display: flex; justify-content:center; align-items:center;">
+                <button id="on"
+                    style="width: 200px; height: 70px; display: block; color: #0aaa57; background: #e4e4e4; font-size: 24px; line-height: 50px; text-decoration:none;">开</button>
+            </div>
+            <br><br>
+            <div style="display: flex; justify-content:center; align-items:center;">
+                <button id="off"
+                    style="width: 200px; height: 70px; display: block; color: #0aaa57; background: #e4e4e4; font-size: 24px; line-height: 50px; text-decoration:none;">关</button>
+            </div>
+    </header>
+    <script>
+        document.querySelector("#on").addEventListener("click", function (params) {
+            var url = "https://server.happy-ti.com/index.php";
+            var paramsdata = { r: 'api/wxcardsale', shop: 867435053647061, cardnum: 10930003914, openid: 'oAPSLxIS4RUGeQ3CSERb7NfVj_js', ch: 'ch' };
+            axios({
+                url: url,
+                method: 'GET',
+                params: paramsdata
+            }).then(function (res) {
+                console.log(res.data);
+            });
+        });
+        document.querySelector("#off").addEventListener("click", function (params) {
+            var url = "https://server.happy-ti.com/index.php";
+            var paramsdata = { r: 'api/wxcardsale', shop: 867435053647061, cardnum: 10930003914, openid: 'oAPSLxIS4RUGeQ3CSERb7NfVj_js', control: 'stop', ch: 'ch' };
+            axios({
+                url: url,
+                method: 'GET',
+                params: paramsdata
+            }).then(function (res) {
+                console.log(res.data);
+            });
+        }); 
+    </script>
+
+</body>
+
+</html>
